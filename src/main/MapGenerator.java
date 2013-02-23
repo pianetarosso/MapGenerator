@@ -19,7 +19,7 @@ public class MapGenerator extends JApplet {
 	private Floor[] floors;
 	private CommunicationWithJS cwjs;
 	
-	private boolean debug = true;
+	private boolean debug = false;
 
 	public void start() {
 
@@ -86,7 +86,7 @@ public class MapGenerator extends JApplet {
 		@Override
 		public void run() {
 			try {
-
+				
 				for (int i= 0; i < floors.length; i++) {
 					Floor f = floors[i];
 					f.loadImage();

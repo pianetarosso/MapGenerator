@@ -14,7 +14,7 @@ public class CommunicationWithJS {
 
 	private static final String GET_FLOORS = "getFloors();";
 	private static final String NUMERO_DI_PIANO = "numero_di_piano";
-	private static final String LINK = "link";
+	private static final String LINK = "immagine";
 	private static final String BEARING = "bearing";
 	private static final String ID = "id";
 
@@ -60,7 +60,8 @@ public class CommunicationWithJS {
 
 		for (; i < 50; i++) 
 			try {
-				jsonFloors.getSlot(i);
+				if (jsonFloors.getSlot(i) == null)
+					break;
 			} catch (JSException jse) {
 				break;
 			}
@@ -68,10 +69,12 @@ public class CommunicationWithJS {
 		Floor[] floors = new Floor[i];
 
 		for (int t=0; t < i; t++) {
+			
 			JSObject jsonFloor = (JSObject) jsonFloors.getSlot(t);
 
 			try {
-				int numero_di_piano = Integer.parseInt(jsonFloor.getMember(NUMERO_DI_PIANO).toString());
+				
+				int numero_di_piano = Integer.parseInt(jsonFloor.getMember(NUMERO_DI_PIANO)+"");
 				URL link = new URL(codebase, jsonFloor.getMember(LINK).toString());
 				float bearing = Float.parseFloat(jsonFloor.getMember(BEARING).toString());
 				int id = Integer.parseInt(jsonFloor.getMember(ID).toString());
