@@ -22,7 +22,7 @@ public class MapGenerator extends JApplet {
 	private boolean debug = false;
 
 	public void start() {
-
+		
 		cwjs = new CommunicationWithJS(this, debug);
 		floors = cwjs.parseFloors(this.getCodeBase());
 
@@ -67,8 +67,8 @@ public class MapGenerator extends JApplet {
 
 	// Abilitare di nuovo le azioni sulla mappa
 	// queste sono disabilitate quando si crea un nuovo marker o si cerca di editarne uno
-	public void operationComplete(boolean saved, int id, String type, boolean access) {
-		ed.operationComplete(saved, id, type, access);
+	public void operationComplete(boolean saved, String id, String type, boolean access) {
+		ed.operationComplete(saved, Integer.parseInt(id), type, access);
 	}
 
 

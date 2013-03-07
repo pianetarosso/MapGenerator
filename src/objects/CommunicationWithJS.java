@@ -71,9 +71,8 @@ public class CommunicationWithJS {
 		for (int t=0; t < i; t++) {
 			
 			JSObject jsonFloor = (JSObject) jsonFloors.getSlot(t);
-
+			
 			try {
-				
 				int numero_di_piano = Integer.parseInt(jsonFloor.getMember(NUMERO_DI_PIANO)+"");
 				URL link = new URL(codebase, jsonFloor.getMember(LINK).toString());
 				float bearing = Float.parseFloat(jsonFloor.getMember(BEARING).toString());
